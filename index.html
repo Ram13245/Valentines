@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments & Milestones ❤️</title>
+    <style>
+        :root {
+            --primary-red: #ff4d6d;
+            --secondary-pink: #ffb3c1;
+            --bg-color: #fff0f3;
+            --text-main: #2b2d42;
+            --accent: #c9184a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Floating Hearts Animation Background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--primary-red);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Layout */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            clip-path: ellipse(100% 80% at 50% 20%);
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--text-main);
+            margin: 0;
+            font-family: 'Georgia', serif;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-top: 15px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        /* Date Entry Styles */
+        .date-card {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 77, 109, 0.1);
+        }
+
+        .date-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 450px;
+            background: #fdf2f4;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .placeholder-text {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .date-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+        }
+
+        .date-number {
+            color: var(--primary-red);
+            font-weight: 300;
+            font-size: 1.2rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .date-name {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        .date-meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .description {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .meta-box {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-red);
+        }
+
+        .meta-item {
+            margin-bottom: 10px;
+        }
+
+        .meta-label {
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: #fff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            margin-top: 5px;
+            border: 1px solid var(--secondary-pink);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: #888;
+            font-size: 1.1rem;
+            background: white;
+            border-top: 1px solid var(--bg-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .image-container { height: 250px; }
+            .date-name { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-container" id="hearts-bg"></div>
+
+    <header>
+        <h1>Our first 5 dates.</h1>
+        <p class="subtitle">Looking back at how we got here, and why I'm so glad we did.</p>
+    </header>
+
+    <div class="container" id="dates-container">
+        <!-- Date 1 -->
+        <div class="date-card">
+            <div class="image-container">
+                <img src="https://blogto-production2-baselayer-display.blogto.com/listings/20230315-MitfarCafe-1.jpg?w=2048&cmd=resize_then_crop&height=1365&format=auto" alt="Miftar Boutique Cafe Interior">
+                <div class="placeholder-text">Miftar Boutique Cafe</div>
+            </div>
+            <div class="content">
+                <div class="date-title">
+                    <span class="date-name">The first time we met</span>
+                    <span class="date-number">01</span>
+                </div>
+                <span class="date-meta">November 16th, 2025 • Yonge St</span>
+                <p class="description">Where it all started. I was so excited to see you, and even more excited once I actually met you. We sat in that cozy atmosphere while you sipped on your hot chocolate.</p>
+                <div class="meta-box">
+                    <div class="meta-item">
+                        <span class="meta-label">My Favourite moment:</span>
+                        <span>Seeing your smile for the very first time. It was everything I hoped for.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Highlight:</span>
+                        <span class="highlight-badge">The hot chocolate you didn't finish. ☕</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date 2 -->
+        <div class="date-card">
+            <div class="image-container">
+                <img src="https://images.squarespace-cdn.com/content/v1/531752e6e4b05fcac6a76326/1669661010761-VY6IHYMPTIO3R6NPASG4/get+well-1471.jpg?format=2500w" alt="Arcade Bar Vibe">
+                <div class="placeholder-text">Get Well Bar</div>
+            </div>
+            <div class="content">
+                <div class="date-title">
+                    <span class="date-name">Pacman & Ossington</span>
+                    <span class="date-number">02</span>
+                </div>
+                <span class="date-meta">November 21st, 2025 • La Banane & Get Well</span>
+                <p class="description">I rushed over from my tattoo appointment to meet you. You were so nervous about being late, but seeing you in that nice coat and those heels... you were worth every second of the wait. After snacks at La Banane, we hit the arcade.</p>
+                <div class="meta-box">
+                    <div class="meta-item">
+                        <span class="meta-label">My Favourite moment:</span>
+                        <span>Our first kiss. Everything else in the room just faded away.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Highlight:</span>
+                        <span class="highlight-badge">Pacman and beer. 🕹️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date 3 -->
+        <div class="date-card">
+            <div class="image-container">
+                <img src="https://scontent.fykz2-1.fna.fbcdn.net/v/t39.30808-6/503705568_1278049180988401_7372704977345821960_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=4iIadiJUMi0Q7kNvwEVNkO9&_nc_oc=Adl1ox5qRdmow0ltvYXN0DKNfBtuLc91ftXagsmrj60JwadQeNqj0Wuy-Ap9UH599hw&_nc_zt=23&_nc_ht=scontent.fykz2-1.fna&_nc_gid=UdOOZmDawmLBv4E1LKAHfQ&oh=00_AfsDxiTZ3nMUS2CuhbZOPfiFQyqwu2uaRuDgXzeFvUCxXQ&oe=69947467" alt="Alla Vodka Pasta">
+                <div class="placeholder-text">Scaddabush Front St</div>
+            </div>
+            <div class="content">
+                <div class="date-title">
+                    <span class="date-name">Pasta & Putting</span>
+                    <span class="date-number">03</span>
+                </div>
+                <span class="date-meta">November 28th, 2025 • Front Street</span>
+                <p class="description">The best pasta at Scaddabush, where I learned about your fear of cheese and "outside meat." We went golfing where you easily won, and I subjected you to my Natasha Bedingfield playlist.</p>
+                <div class="meta-box">
+                    <div class="meta-item">
+                        <span class="meta-label">My Favourite moment:</span>
+                        <span>Learning about your love for the stars. ✨</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Highlight:</span>
+                        <span class="highlight-badge">Talking for hours and that second kiss.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date 4 -->
+        <div class="date-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=1200&q=80" alt="Scotiabank Arena Vibe">
+                <div class="placeholder-text">Scotiabank Arena</div>
+            </div>
+            <div class="content">
+                <div class="date-title">
+                    <span class="date-name">The Lowry Jersey</span>
+                    <span class="date-number">04</span>
+                </div>
+                <span class="date-meta">December 2nd, 2025 • Union Station</span>
+                <p class="description">That kiss at Union Station made me feel like we were the only two people in the world. You wore your Lowry jersey and let me in on your secret "gambling addiction" while we shared popcorn at the game.</p>
+                <div class="meta-box">
+                    <div class="meta-item">
+                        <span class="meta-label">My Favourite moment:</span>
+                        <span>How much you laughed at my jokes.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Highlight:</span>
+                        <span class="highlight-badge">Sharing popcorn at the Raptors game. 🏀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date 5 -->
+        <div class="date-card">
+            <div class="image-container">
+                <img src="https://images.curiocity.com/uploads/2025/11/holiday-hills-stackt-market.jpg?format=auto&w=980&h=653" alt="Amsterdam BrewHouse Waterfront">
+                <div class="placeholder-text">Amsterdam BrewHouse</div>
+            </div>
+            <div class="content">
+                <div class="date-title">
+                    <span class="date-name">Waterfront & Connections</span>
+                    <span class="date-number">05</span>
+                </div>
+                <span class="date-meta">December 6th, 2025 • Queens Quay</span>
+                <p class="description">The first time we held hands. We walked along the cold waterfront, met the "MVP" man by the stars, and ended up at Amsterdam BrewHouse. We sat for hours, eyes interlocked, minds floating, and hearts truly connected.</p>
+                <div class="meta-box">
+                    <div class="meta-item">
+                        <span class="meta-label">My Favourite moment:</span>
+                        <span>Just being with you. Everything else felt secondary.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Highlight:</span>
+                        <span class="highlight-badge">"I am scared by how much I like you." ❤️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>You're my bibimbap. ❤️</p>
+    </footer>
+
+    <script>
+        // Floating Hearts
+        const heartsContainer = document.getElementById('hearts-bg');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
